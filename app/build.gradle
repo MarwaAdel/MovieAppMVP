@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.dev.movieapp"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        buildConfigField "String" , "API_KEY" , "\"477530ec70ab228cc00d7599a533b924\""
+        buildConfigField "String" , "BASE_URL" , "\"https://api.themoviedb.org/\""
+        buildConfigField "String" , "IMG_BASE_URL" , "\"https://image.tmdb.org/\""
+        buildConfigField "String" , "API_LANG" , "\"en-US\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildToolsVersion '28.0.3'
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:$androidx_app_compact"
+    implementation "androidx.legacy:legacy-support-v4:$androidx_multiple"
+    implementation "androidx.recyclerview:recyclerview:$androidx_multiple"
+    implementation "com.google.android.material:material:$androidx_multiple"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraint_layout"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$androix_testrunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_espresso"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+
+    //UI
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.jakewharton:butterknife:$butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
+    implementation "androidx.cardview:cardview:$androidx_multiple"
+    implementation "androidx.recyclerview:recyclerview:$androidx_multiple"
+    implementation "androidx.annotation:annotation:$androidx_multiple"
+    implementation "androidx.core:core:$androidx_core"
+    implementation "androidx.legacy:legacy-support-core-ui:$androidx_multiple"
+    implementation "com.android.support:design:$support_design"
+
+    //Dagger 2
+    implementation "com.google.dagger:dagger:$dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
+
+    //Retrofit , RxJava Dependencies
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxand"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rxadapter"
+
+    //APP Lifecycle
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$androidx_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$androidx_lifecycle"
+    //Multidex
+    implementation "com.android.support:multidex:$multidex"
+}
